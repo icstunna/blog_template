@@ -1,0 +1,46 @@
+<p>
+  <% if admin_signed_in? %>
+    <%= link_to('Admin Logout', destroy_admin_session_path, :method => :delete) %>
+  <% else %>
+    <%= link_to('Admin Login', new_admin_session_path) %>
+
+  <% end %>
+</p>
+
+<% if admin_signed_in? %>
+  <h1>New Blog Post!</h1>
+    <%= form_for :post, url: post_index_path(@home) do |f| %>
+      <p>
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+      </p>
+      <p>
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <%end%>
+<% end%>
+
+<ul>
+  <% @poster.each do |post|%>
+    <li class="post<%=post.id%>">
+      <div class="post<%=post.id%>">
+        <a class="render_post" data-id="<%=post.id%>" href="/post">
+          <%= post.title %>
+        </a>
+      </div>
+      <div class="post<%=post.id%>_comments comments">
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <%= comment.comment%>
+            </li>
+          <% end%>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>
