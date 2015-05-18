@@ -15,7 +15,7 @@ $(document).on('page:change', function() {
       var x = data.post_content
       var form = '<form class="render_comment" data-id="'+data.id+'"><input class="comment_input" type="text" name="comment"><input type="submit" value="new comment"></form>'
 
-      var remove = '<span><button type="button" data-id="'+data.id+'" class="delete">DELETE</button><form action="post/'+data.id+'/edit" data-id="'+data.id+'" class="edit"><input type="submit" value="edit"></form></span>'
+      var remove = '<span><p><a href="/post/'+data.id+'" data-id="'+data.id+'" class="delete">DELETE</button></p></span><span><p><a href="post/'+data.id+'/edit" data-id="'+data.id+'" class="edit">EDIT</a></p></span>'
 
       $('div.post'+data.id).append('<span class="post'+data.id+'"><p>'+x+'</p>'+remove+form+'</span>')
     })
