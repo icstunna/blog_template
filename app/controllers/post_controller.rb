@@ -29,4 +29,16 @@ class PostController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(title: params[:post][:title],
+                 content: params[:post][:content])
+    redirect_to :root
+  end
+
+  def show
+    redirect_to :root
+  end
+
 end
